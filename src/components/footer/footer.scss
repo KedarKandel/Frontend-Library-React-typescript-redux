@@ -1,0 +1,21 @@
+.footer{
+    bottom: 0;
+ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #242424;
+    padding: 2rem;
+    color: white;
+    height: 4rem;
+    width: 100%;
+    .socialIcons{
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        cursor: pointer;
+    }
+    .copyRight{
+      
+    }
+}
