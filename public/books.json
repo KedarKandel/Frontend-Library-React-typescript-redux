@@ -1,0 +1,155 @@
+{
+    "data": [
+      {
+        "id": 1,
+        "isbn": "9780593098240",
+        "title": "The Fellowship of the Ring",
+        "description": "The first book in J.R.R. Tolkien's epic Lord of the Rings trilogy",
+        "publisher": "Houghton Mifflin Harcourt",
+        "authors": "J.R.R. Tolkien",
+        "status": "Available",
+        "publishDate": "1954-07-29",
+        "price": 10,
+        "image":"https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/713fuKZOVpL._AC_UF1000,1000_QL80_.jpg"
+      
+      },
+      {
+        "id": 2,
+        "isbn": "9780261103573",
+        "title": "Harry Potter ",
+        "description": "The first book in J.K. Rowling's bestselling Harry Potter series",
+        "publisher": "Bloomsbury Publishing",
+        "authors": "J.K. Rowling",
+        "status": "Taken",
+        "borrowerId": "123456",
+        "publishDate": "1997-06-26",
+        "borrowDate": "2022-03-15",
+        "returnDate": "2022-04-15",
+        "price": 30,
+        "image":"https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/713fuKZOVpL._AC_UF1000,1000_QL80_.jpg"
+       
+      },
+      {
+        "id": 3,
+        "isbn": "9780441172719",
+        "title": "Dune",
+        "description": "A classic science fiction novel by Frank Herbert",
+        "publisher": "Ace Books",
+        "authors": "Frank Herbert",
+        "status": "Available",
+        "publishDate": "1965-08-01",
+        "classic":"Classic",
+        "price": 25,
+        "image":"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1555447414i/44767458.jpg"
+      },
+      {
+        "id": 4,
+        "isbn": "9780140283334",
+        "title": "To Kill a Mockingbird",
+        "description": "A Pulitzer Prize-winning novel by Harper Lee",
+        "publisher": "Penguin Books",
+        "authors": "Harper Lee",
+        "status": "Taken",
+        "publishDate": "1960-07-11",
+        "price": 55,
+        "image":"https://upload.wikimedia.org/wikipedia/commons/4/4f/To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg"
+       
+      },
+      {
+        "id": 5,
+        "isbn": "9780812988406",
+        "title": "The Nightingale",
+        "description": "A historical fiction novel by Kristin Hannah",
+        "publisher": "St. Martin's Press",
+        "authors": "Kristin Hannah",
+        "status": "Available",
+        "borrowerId": "789012",
+        "publishDate": "2015-02-03",
+        "borrowDate": "2023-03-15",
+        "returnDate": "2023-04-15",
+        "price": 22,
+        "image":"https://fr.web.img6.acsta.net/pictures/21/02/23/14/42/5142228.jpg"
+       
+      },{
+        "id": 6,
+        "isbn": "9781501168680",
+        "title": "Becoming",
+        "description": "A memoir by Michelle Obama",
+        "publisher": "Crown Publishing Group",
+        "authors": "Michelle Obama",
+        "status": "Available",
+        "publishDate": "2018-11-13",
+        "classic":"Classic",
+        "price": 17,
+        "image":"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1528206996i/38746485.jpg"
+      },
+      {
+        "id": 7,
+        "isbn": "9780743273565",
+        "title": "The Catcher in the Rye",
+        "description": "A novel by J.D. Salinger",
+        "publisher": "Little, Brown and Company",
+        "authors": "J.D. Salinger",
+        "status": "Taken",
+        "publishDate": "1951-07-16",
+        "classic":"Classic",
+        "price": 12,
+        "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/The_Catcher_in_the_Rye_%281951%2C_first_edition_cover%29.jpg/640px-The_Catcher_in_the_Rye_%281951%2C_first_edition_cover%29.jpg"
+      },
+      {
+        "id": 8,
+        "isbn": "9781982127794",
+        "title": "The Testaments",
+        "description": "A novel by Margaret Atwood and a sequel to The Handmaid's Tale",
+        "publisher": "Nan A. Talese",
+        "authors": "Margaret Atwood",
+        "status": "Available",
+        "borrowerId": "345678",
+        "publishDate": "2019-09-10",
+        "borrowDate": "2023-03-21",
+        "returnDate": "2023-04-21",
+        "price": 15,
+        "image":"https://media.wired.co.uk/photos/606d9bc6dbc4c121710a3e21/16:9/w_2992,h_1683,c_limit/thetestamentswireduk.jpg"
+      },
+      {
+        "id": 9,
+        "isbn": "9780593355685",
+        "title": "Project Hail Mary",
+        "description": "A science fiction novel by Andy Weir",
+        "publisher": "Ballantine Books",
+        "authors": "Andy Weir",
+        "status": "Taken",
+        "publishDate": "2021-05-04",
+        "price": 30,
+        "image":"https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1597695864i/54493401.jpg"
+      },
+      {
+        "id": 10,
+        "isbn": "9781250207209",
+        "title": "The Silent Patient",
+        "description": "A psychological thriller novel by Alex Michaelides",
+        "publisher": "Celadon Books",
+        "authors": "Alex Michaelides",
+        "status": "Taken",
+        "borrowerId": "901234",
+        "publishDate": "2019-02-05",
+        "borrowDate": "2023-03-16",
+        "returnDate": "2023-04-16",
+        "classic":"Classic",
+        "price": 10,
+        "image":"https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/51oVTRsjcqL._SX329_BO1,204,203,200_.jpg"
+      },
+      {
+        "id": 11,
+        "isbn": "9780345413369",
+        "title": "Jurassic Park",
+        "description": "A science fiction novel by Michael Crichton",
+        "publisher": "Ballantine Books",
+        "authors": "Michael Crichton",
+        "status": "Available",
+        "publishDate": "1990-11-20",
+        "price": 50,
+        "image":"https://m.media-amazon.com/images/I/A1nnSXofNaL.jpg"
+      }
+    ]
+  }

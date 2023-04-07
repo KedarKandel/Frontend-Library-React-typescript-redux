@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { User, Book, BookState } from '../../interfaces/types'
 
 interface BookPayload {
@@ -11,6 +11,12 @@ const initialState: BookState = {
   isLoading: false,
   error: null
 }
+
+export const fetchBooksThunk = createAsyncThunk('books/fetch', async () => {
+  const response = await fetch('http://localhost:5173/books.json')
+  const books = await response.json()
+  return books.data
+})
 
 export const bookSlice = createSlice({
   name: 'books',
@@ -46,9 +52,21 @@ export const bookSlice = createSlice({
     },
     setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload
-    }
-
-    // todo: add search and filters functionality
+    }, 
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchBooksThunk.pending, (state) => {
+      state.isLoading = true
+    })
+    builder.addCase(fetchBooksThunk.fulfilled, (state, action) => {
+      state.isLoading = false
+      state.items = action.payload
+     
+    })
+    builder.addCase(fetchBooksThunk.rejected, (state, action: PayloadAction<any>) => {
+      state.isLoading = false
+      state.error = action.payload
+    })
   }
 })
 
