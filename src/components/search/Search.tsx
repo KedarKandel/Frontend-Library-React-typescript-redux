@@ -1,13 +1,27 @@
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
 import './search.scss'
 
 type Props = {}
 
 const Search = (props: Props) => {
   return (
-    <div className="searchContainer">
-      <input type="text" placeholder="search.." />
-      <button>Find</button>
-    </div>
+    <Box
+      className="search"
+      component="form"
+      sx={{
+        width: '40rem',
+        padding: "5%"
+      }}
+      noValidate
+      autoComplete="off">
+      <TextField
+        id="outlined-basic"
+        label="search books"
+        variant="outlined"
+        sx={{ width: '20rem' }}
+      />
+    </Box>
   )
 }
 

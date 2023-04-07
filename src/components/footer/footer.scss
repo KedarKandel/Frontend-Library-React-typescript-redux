@@ -1,21 +1,19 @@
-.footer{
-    bottom: 0;
- 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #242424;
-    padding: 2rem;
-    color: white;
-    height: 4rem;
+footer{
     width: 100%;
-    .socialIcons{
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        cursor: pointer;
+    position: fixed;
+    bottom: 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   color: white;
+   min-height: 5%;
+   background-color: rgb(93, 93, 132);
+
+   div{
+    list-style: none;
+    display: flex;
+    li{
+        margin: 0 5px;
     }
-    .copyRight{
-      
-    }
+   }
 }
