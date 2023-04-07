@@ -7,7 +7,10 @@ React, TypeScript and Redux and scss for styling.
 This project was created using Vite.
 **A Library management system**
 
-
+## To run the project
+   1. Clone the repository: git clone ("url")
+   2. npm install -to install all the required dependencies.
+   3. npm start -to run the project locally
 
 //..data sources used 
 
@@ -48,5 +51,8 @@ Admin can:
 - update info of an author
 - remove an author
 
+Outcomes of the project:
+   React, sass, redux, react-redux, pagination and typescript skills 
+  
 
 

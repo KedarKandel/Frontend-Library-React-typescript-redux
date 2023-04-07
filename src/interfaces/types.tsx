@@ -16,12 +16,13 @@ export type Book = {
   title: string
   description: string
   publisher: string
-  authors: string
+  authors: string[]
   status: boolean
   borrowerId?: string
   publishDate: Date
   borrowDate?: Date
   returnDate?: Date
+  noOfCopies: number
 }
 
 export type BookState = {
