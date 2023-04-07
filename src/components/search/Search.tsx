@@ -10,17 +10,13 @@ const Search = (props: Props) => {
       className="search"
       component="form"
       sx={{
-        width: '40rem',
-        padding: "5%"
+        padding:"20px",
+        backgroundColor:"white",
+        borderRadius:"5px"
       }}
       noValidate
       autoComplete="off">
-      <TextField
-        id="outlined-basic"
-        label="search books"
-        variant="outlined"
-        sx={{ width: '20rem' }}
-      />
+      <TextField id="outlined-basic" label="search books ..." variant="outlined" />
     </Box>
   )
 }
