@@ -1,6 +1,5 @@
 # Library Management System
 
-## This is a hobby project.
 
 ### `Tech Stack:`
 React, TypeScript and Redux and scss for styling.
