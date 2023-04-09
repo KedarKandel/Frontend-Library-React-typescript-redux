@@ -40,7 +40,8 @@ export type CartItem = {
 
 export type CartState = {
   items: CartItem[],
-  quantity: number
+  quantity: number,
+  borrowedBooks:Book[]
 }
 
 

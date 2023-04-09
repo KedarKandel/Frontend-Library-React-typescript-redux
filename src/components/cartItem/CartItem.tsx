@@ -1,13 +1,18 @@
+import { useSelector } from 'react-redux'
 import { Book } from '../../interfaces/types'
 import './cartItem.scss'
+import { RootState } from '../../redux/store'
 
 type Props = {
   book: Book
   quantity: number //use quantity to increase the qty of same item
   onReturnBook: () => void
+  onDecrease: () => void
+  onIncrease: () => void
 }
 
-const CartItem = ({ book, quantity, onReturnBook }: Props) => {
+const CartItem = ({ book, quantity, onIncrease, onDecrease, onReturnBook }: Props) => {
+    const cartQty = useSelector((state:RootState)=>state.cart.quantity)
   return (
     <div className="cartItem">
       <div className="bookItemWrapper">
@@ -17,9 +22,9 @@ const CartItem = ({ book, quantity, onReturnBook }: Props) => {
         <p>{book.publishDate ? book.publishDate.toString() : ''}</p>
       </div>
       <div className='quantity'>
-        <span>--</span>
+        <span onClick={onDecrease}>--</span>
         <h2>{quantity}</h2>
-        <span>+</span>
+        <span onClick={onIncrease}>+</span>
       </div>
 
       <button onClick={onReturnBook}>Return</button>

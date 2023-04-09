@@ -13,7 +13,6 @@ const BookItem = ({ book }: Props) => {
   const dispatch = useDispatch<AppDispatch>()
   const handleAddToCart =()=>{
     dispatch(addToCart(book))
-    console.log(book)
   }
   return (
     <div className="bookItem">
