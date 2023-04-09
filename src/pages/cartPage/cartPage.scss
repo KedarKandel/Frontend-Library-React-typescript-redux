@@ -1,0 +1,15 @@
+.cartPage{
+    min-height: 88vh;
+    padding: 5%;
+    .cartPage__heading{  
+        margin-bottom: 2%;
+        color: teal;
+        font-weight: bold;
+        text-decoration: underline teal;  
+    }
+    .cartPage__items{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}

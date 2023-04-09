@@ -17,16 +17,18 @@ export type Book = {
   description: string
   publisher: string
   authors: string[]
-  status: boolean
+  status: string
   borrowerId?: string
   publishDate: Date
   borrowDate?: Date
   returnDate?: Date
-  noOfCopies: number
+  noOfCopies?: number
+  category: string
 }
 
 export type BookState = {
   items: Book[]
+  filteredItems: Book[]
   isLoading: boolean
   error: string | null
 }

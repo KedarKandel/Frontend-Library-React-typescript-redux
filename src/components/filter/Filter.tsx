@@ -2,14 +2,14 @@ import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
-import { useState } from 'react'
 import { Stack } from '@mui/material'
 
-type Props = {}
+type Props = {
+  category: string
+  setCategory: React.Dispatch<React.SetStateAction<string>>
+}
 
-const Filter = () => {
-  const [category, setCategory] = useState<string>('')
-
+const Filter = ({ category, setCategory }: Props) => {
   const handleChange = (event: SelectChangeEvent) => {
     setCategory(event.target.value)
   }
@@ -22,14 +22,15 @@ const Filter = () => {
         borderRadius: '5px'
       }}>
       <FormControl sx={{ m: 1, minWidth: 100 }}>
-        <InputLabel id="demo-simple-select-autowidth-label">Categories</InputLabel>
+        <InputLabel id="category__filter">Categories</InputLabel>
         <Select
-          labelId="demo-simple-select-autowidth-label"
-          id="demo-simple-select-autowidth"
+          labelId="category__filter"
+          id="category__filter"
           value={category}
           onChange={handleChange}
           autoWidth
-          label="Age">
+          label="Category">
+          <MenuItem value={'all'}>All</MenuItem>
           <MenuItem value={'drama'}>Drama</MenuItem>
           <MenuItem value={'fiction'}>Fiction</MenuItem>
           <MenuItem value={'history'}>History</MenuItem>

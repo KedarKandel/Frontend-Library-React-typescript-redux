@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Book, CartState } from '../../interfaces/types'
 
 const initialState: CartState = {
-  items: [],
+  items:[],
   quantity: 0
 }
 
@@ -17,6 +17,7 @@ export const cartSlice = createSlice({
       } else {
         state.items.push({ book: action.payload, quantity: 1 })
       }
+      state.quantity += 1;
     },
     removeFromCart: (state, action: PayloadAction<Book>) => {
       const existingItem = state.items.find((item) => item.book.id === action.payload.id)

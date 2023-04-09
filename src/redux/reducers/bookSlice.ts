@@ -9,7 +9,15 @@ interface BookPayload {
 const initialState: BookState = {
   items: [],
   isLoading: false,
-  error: null
+  error: null,
+  filteredItems: []
+}
+// type for search
+export interface SearchTermPayload {
+  searchTerm: string
+}
+export interface filterTermPayload{
+  category: string
 }
 
 export const fetchBooksThunk = createAsyncThunk('books/fetch', async () => {
@@ -25,6 +33,34 @@ export const bookSlice = createSlice({
     addBook: (state, action: PayloadAction<Book>) => {
       state.items.push(action.payload)
     },
+    searchBooks: (state, action: PayloadAction<SearchTermPayload>) => {
+      const { searchTerm } = action.payload
+      if (!searchTerm) {
+        state.filteredItems = state.items
+      } else {
+        state.filteredItems = state.items.filter((book) => {
+          const titleMatch = book.title.toLowerCase().includes(searchTerm.toLowerCase())
+          const authorMatch = book.authors.some((author) =>
+            author.trim().toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          return titleMatch || authorMatch
+        })
+      }
+    },
+    filterBooks:(state,action:PayloadAction<filterTermPayload>)=>{
+         const {category}= action.payload
+         if(category ==="all"){
+          state.filteredItems = state.items
+         }else{
+          state.filteredItems = state.items.filter((book)=>{
+            const catMatch = book.category.toLowerCase().includes(category.toLowerCase())
+            return catMatch
+           })
+         }
+        
+         
+    },
+
     deleteBook: (state, action: PayloadAction<BookPayload>) => {
       const { book, user } = action.payload
       if (user.role === 'Admin') {
@@ -52,16 +88,17 @@ export const bookSlice = createSlice({
     },
     setError: (state, action: PayloadAction<string>) => {
       state.error = action.payload
-    }, 
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBooksThunk.pending, (state) => {
       state.isLoading = true
     })
-    builder.addCase(fetchBooksThunk.fulfilled, (state, action) => {
+    builder.addCase(fetchBooksThunk.fulfilled, (state, action: PayloadAction<Book[]>) => {
       state.isLoading = false
       state.items = action.payload
-     
+      state.filteredItems = action.payload
+    
     })
     builder.addCase(fetchBooksThunk.rejected, (state, action: PayloadAction<any>) => {
       state.isLoading = false
@@ -70,6 +107,7 @@ export const bookSlice = createSlice({
   }
 })
 
-export const { addBook, deleteBook, updateBook, setBooks, setLoading, setError } = bookSlice.actions
+export const { addBook, searchBooks, filterBooks, deleteBook, updateBook, setBooks, setLoading, setError } =
+  bookSlice.actions
 
 export default bookSlice.reducer
