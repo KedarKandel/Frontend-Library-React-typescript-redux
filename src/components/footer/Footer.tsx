@@ -1,19 +1,18 @@
-import './footer.scss'
+import "./footer.scss"
 
 type Props = {}
 
 const Footer = (props: Props) => {
   return (
-    <section className="footer">
-      <div className="socialIcons">
-        <h3>facebook</h3>
-        <h3>Instagram</h3>
-        <h3>Twitter</h3>
+    <footer>
+      <div>
+        <li>Twitter</li>
+        <li>Facebook</li>
       </div>
-      <div className="copyRight">
-        <span>@ copyRight 2023</span>
+      <div>
+        <span>@copy right protected 2023</span>
       </div>
-    </section>
+    </footer>
   )
 }
 

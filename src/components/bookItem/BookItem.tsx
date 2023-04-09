@@ -1,17 +1,30 @@
+import { useDispatch} from 'react-redux'
+import { AppDispatch } from '../../redux/store'
+import {addToCart} from "../../redux/reducers/cartSlice"
+
+import { Book } from '../../interfaces/types'
 import './bookItem.scss'
 
-type Props = {}
+type Props = {
+  book: Book
+}
 
-const BookItem = (props: Props) => {
+const BookItem = ({ book }: Props) => {
+  const dispatch = useDispatch<AppDispatch>()
+  const handleAddToCart =()=>{
+    dispatch(addToCart(book))
+  }
   return (
     <div className="bookItem">
-      <h3>Book</h3>
-      <h1>Old man and the sea</h1>
-      <p>This is a story of life </p>
-      <span>Author: Paulo colho</span>
-      <span>
-        status <small>available</small>
-      </span>
+      <div className="bookItemWrapper">
+        <h4>{book.title}</h4>
+        <p>By:-{book.authors}</p>
+        <p>{book.publisher}</p>
+        <p>{book.publishDate ? book.publishDate.toString() : ''}</p>
+        <small>{book.status}</small>
+      </div>
+      
+      <button disabled={book.status !== 'Available'} onClick={handleAddToCart} >Borrow</button>
     </div>
   )
 }

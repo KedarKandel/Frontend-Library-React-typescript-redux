@@ -1,31 +1,3 @@
-.searchContainer {
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  gap: 0.3rem;
-  width: 30%;
-
-  input {
-    width: 70%;
-    font-size: 1.2rem;
-    outline: none;
-    border: none;
-    color: rgb(83, 96, 109);
-    padding: 1rem;
-    border-radius: 5px;
-    border-bottom: 1px solid gray;
-    &::placeholder {
-      font-size: 1.2rem;
-    }
-  }
-  button {
-  height: 3rem;
-  width: 5rem;
-    color: white;
-    background-color: teal;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+.search{
+ background-color: white;
 }

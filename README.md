@@ -1,18 +1,23 @@
 # Library Management System
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 
 ### `Tech Stack:`
 React, TypeScript and Redux and scss for styling.
-This project was created using Vite.
+
+### This project was created using Vite.
+
 **A Library management system**
 
 ## To run the project
    1. Clone the repository: git clone ("url")
    2. npm install -to install all the required dependencies.
-   3. npm start -to run the project locally
+   3. npm run dev -to run the project locally
 
-//..data sources used 
+### Data sources used 
 
 - Books
   - ISBN

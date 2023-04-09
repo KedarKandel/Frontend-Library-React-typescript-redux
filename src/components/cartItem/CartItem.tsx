@@ -1,30 +1,34 @@
+import { useSelector } from 'react-redux'
+import { Book } from '../../interfaces/types'
 import './cartItem.scss'
+import { RootState } from '../../redux/store'
 
-type Props = {}
+type Props = {
+  book: Book
+  quantity: number //use quantity to increase the qty of same item
+  onReturnBook: () => void
+  onDecrease: () => void
+  onIncrease: () => void
+}
 
-const CartItem = (props: Props) => {
+const CartItem = ({ book, quantity, onIncrease, onDecrease, onReturnBook }: Props) => {
+    const cartQty = useSelector((state:RootState)=>state.cart.quantity)
   return (
-    <header className="cartItemContainer">
-      <section className="itemContainer">
-        <img
-          src="https://i5.walmartimages.com/asr/ac841cbf-5df2-43f7-be2e-f9eb33be957b_1.a2c623b4f9c7a642930e8b1d511b4a19.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
-          alt=""
-        />
-        <div className="addRemoveDiv">
-          <h2>Happiness("Khusi")</h2>
-          <div className="icons">
-            <i className="fa-solid fa-plus"></i>
-            <h4>Quantity: <strong>01</strong></h4>
-            <i className="fa-solid fa-minus"></i>
-          </div>
-        </div>
-        <div className="checkout">
-            <span>Charge</span>
-          <span>€ 20</span>
-        </div>
-      </section>
-      
-    </header>
+    <div className="cartItem">
+      <div className="bookItemWrapper">
+        <h4>{book.title}</h4>
+        <p>By: {book.authors.join(', ')}</p>
+        <p>{book.publisher}</p>
+        <p>{book.publishDate ? book.publishDate.toString() : ''}</p>
+      </div>
+      <div className='quantity'>
+        <span onClick={onDecrease}>--</span>
+        <h2>{quantity}</h2>
+        <span onClick={onIncrease}>+</span>
+      </div>
+
+      <button onClick={onReturnBook}>Return</button>
+    </div>
   )
 }
 

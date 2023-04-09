@@ -1,29 +1,30 @@
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { RootState } from '../../redux/store'
 import './navbar.scss'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../redux/store'
 
 type Props = {}
 
 const Navbar = (props: Props) => {
-  const user = useSelector((state: RootState) => state.user.currentUser)
+  const cartQty = useSelector((state:RootState)=>state.cart.quantity)
   return (
-    <div className="navbar">
-      <h1>Awesome Library</h1>
-      <ul>
-        <Link to="/" className="routerLink">
-          Home
+    <header className="navbar">
+      <h1>Library</h1>
+      <div>
+        <Link to="/" style={{ textDecoration: 'none', color: '#fff' }}>
+          <span>Home</span>
         </Link>
-        <Link to="/login" className="routerLink">
-          {user ? 'signout' : 'login'}
+        <Link to="/admin" style={{ textDecoration: 'none', color: '#fff' }}>
+          <span>Admin</span>
         </Link>
-        {user && (
-          <Link to="/cart" className="routerLink">
-            <i className="fa-solid fa-cart-plus"></i>
-          </Link>
-        )}
-      </ul>
-    </div>
+      </div>
+
+      <Link to="/cart" style={{ textDecoration: 'none', color: '#fff' }}>
+        <div>
+          <span>Cart({cartQty})</span>
+        </div>
+      </Link>
+    </header>
   )
 }
 
