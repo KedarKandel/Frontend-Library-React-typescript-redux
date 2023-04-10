@@ -18,7 +18,6 @@ const AdminPage = (props: Props) => {
     event.preventDefault()
 
     const newBook: Book = {
-      id: (document.getElementById('ID') as HTMLInputElement).value,
       title: (document.getElementById('title') as HTMLInputElement).value,
       isbn: (document.getElementById('isbn') as HTMLInputElement).value,
       description: (document.getElementById('description') as HTMLInputElement).value,
@@ -44,8 +43,6 @@ const AdminPage = (props: Props) => {
         <div className="sidebarWrapper">
           <h2>Welcome Admin!</h2>
           <form onSubmit={handleAddBook}>
-            <label htmlFor="title">Id</label>
-            <input type="number" id="ID" />
             <label htmlFor="title">Title of the book</label>
             <input type="text" id="title" />
             <label htmlFor="isbn">Isbn</label>

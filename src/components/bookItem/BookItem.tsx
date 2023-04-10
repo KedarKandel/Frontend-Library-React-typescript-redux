@@ -1,6 +1,6 @@
-import { useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../redux/store'
-import {addToCart} from "../../redux/reducers/cartSlice"
+import { addToCart } from '../../redux/reducers/cartSlice'
 
 import { Book } from '../../interfaces/types'
 import './bookItem.scss'
@@ -11,7 +11,7 @@ type Props = {
 
 const BookItem = ({ book }: Props) => {
   const dispatch = useDispatch<AppDispatch>()
-  const handleAddToCart =()=>{
+  const handleAddToCart = () => {
     dispatch(addToCart(book))
   }
   return (
@@ -23,8 +23,10 @@ const BookItem = ({ book }: Props) => {
         <p>{book.publishDate ? book.publishDate.toString() : ''}</p>
         <small>{book.availability}</small>
       </div>
-      
-      <button disabled={book.availability !== 'Available'} onClick={handleAddToCart} >Borrow</button>
+
+      <button disabled={book.availability !== 'Available'} onClick={handleAddToCart}>
+        Borrow
+      </button>
     </div>
   )
 }
