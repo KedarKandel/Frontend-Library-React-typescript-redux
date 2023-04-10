@@ -1,9 +1,5 @@
 # Library Management System
 
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
 
 ### `Tech Stack:`
 React, TypeScript and Redux and scss for styling.

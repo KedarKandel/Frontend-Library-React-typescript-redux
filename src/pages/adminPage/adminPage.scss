@@ -1,0 +1,43 @@
+.adminPage{
+    display: flex;
+    color: #fff;
+    .sidebar{
+       flex: 3;
+        background-color: rgb(59, 69, 69);
+        .sidebarWrapper{
+            padding: 5%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 70%;
+            form{
+                display: flex;
+                flex-direction: column;
+                gap: .3rem;
+                input{
+                    font-size: 30px;
+                    color: gray;
+                }
+                label{
+                    text-align: left;
+                    font-size: 20px;
+                }
+                button{
+                    padding: 6px 2px;
+                    color: #fff;
+                    border: none;
+                    background-color: teal;
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .adminBookItems{
+        flex: 5;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 5px;
+    }
+}

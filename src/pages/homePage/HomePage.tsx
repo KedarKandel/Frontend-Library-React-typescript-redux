@@ -8,7 +8,7 @@ import Search from '../../components/search/Search'
 
 // from redux store
 import { AppDispatch, RootState } from '../../redux/store'
-import { fetchBooksThunk, filterBooks, searchBooks } from '../../redux/reducers/bookSlice'
+import { filterBooks, searchBooks } from '../../redux/reducers/bookSlice'
 
 import './homePage.scss'
 import { Book } from '../../interfaces/types'
