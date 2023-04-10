@@ -21,10 +21,10 @@ const BookItem = ({ book }: Props) => {
         <p>By:-{book.authors}</p>
         <p>{book.publisher}</p>
         <p>{book.publishDate ? book.publishDate.toString() : ''}</p>
-        <small>{book.status}</small>
+        <small>{book.availability}</small>
       </div>
       
-      <button disabled={book.status !== 'Available'} onClick={handleAddToCart} >Borrow</button>
+      <button disabled={book.availability !== 'Available'} onClick={handleAddToCart} >Borrow</button>
     </div>
   )
 }

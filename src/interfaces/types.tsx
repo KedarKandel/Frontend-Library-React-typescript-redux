@@ -11,19 +11,19 @@ export type UserState = {
 }
 
 export type Book = {
-  id: string | number
+  id?: string | number
   isbn: string
   title: string
   description: string
   publisher: string
   authors: string[]
-  status: string
   borrowerId?: string
-  publishDate: Date
+  publishDate: string
   borrowDate?: Date
   returnDate?: Date
   noOfCopies?: number
   category: string
+  availability: string
 }
 
 export type BookState = {

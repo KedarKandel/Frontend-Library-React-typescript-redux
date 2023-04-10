@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { User, Book, BookState } from '../../interfaces/types'
 
-interface BookPayload {
+export interface BookPayload {
   book: Book
   user: User
 }
@@ -31,7 +31,10 @@ export const bookSlice = createSlice({
   initialState,
   reducers: {
     addBook: (state, action: PayloadAction<Book>) => {
-      state.items.push(action.payload)
+      const newBook = action.payload;
+      const id = state.items.length;
+      newBook.id = id;
+      state.items.push(newBook);
     },
     searchBooks: (state, action: PayloadAction<SearchTermPayload>) => {
       const { searchTerm } = action.payload

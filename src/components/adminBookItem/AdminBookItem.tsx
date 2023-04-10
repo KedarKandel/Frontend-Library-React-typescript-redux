@@ -3,9 +3,10 @@ import "./adminBookItem.scss"
 
 type Props = {
     book: Book
+    onDeleteBook:()=>void
 }
 
-const AdminBookItem = ({book}: Props) => {
+const AdminBookItem = ({book, onDeleteBook}: Props) => {
   return (
     <div className="bookItem">
     <div className="bookItemWrapper">
@@ -13,10 +14,10 @@ const AdminBookItem = ({book}: Props) => {
       <p>By:-{book.authors}</p>
       <p>{book.publisher}</p>
       <p>{book.publishDate ? book.publishDate.toString() : ''}</p>
-      <small>{book.status}</small>
+      <small>{book.availability}</small>
     </div>
     <div className="adminButtons">
-    <button>Delete</button>
+    <button onClick={onDeleteBook}>Delete</button>
     <button>Update</button>
     </div>
     
