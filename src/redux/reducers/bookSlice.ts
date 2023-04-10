@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { User, Book, BookState } from '../../interfaces/types'
 
-interface BookPayload {
+export interface BookPayload {
   book: Book
   user: User
 }
@@ -16,7 +16,7 @@ const initialState: BookState = {
 export interface SearchTermPayload {
   searchTerm: string
 }
-export interface filterTermPayload{
+export interface filterTermPayload {
   category: string
 }
 
@@ -31,7 +31,10 @@ export const bookSlice = createSlice({
   initialState,
   reducers: {
     addBook: (state, action: PayloadAction<Book>) => {
-      state.items.push(action.payload)
+      const newBook = action.payload
+      const id = state.items.length + 1
+      newBook.id = id
+      state.items.push(newBook)
     },
     searchBooks: (state, action: PayloadAction<SearchTermPayload>) => {
       const { searchTerm } = action.payload
@@ -47,18 +50,16 @@ export const bookSlice = createSlice({
         })
       }
     },
-    filterBooks:(state,action:PayloadAction<filterTermPayload>)=>{
-         const {category}= action.payload
-         if(category ==="all"){
-          state.filteredItems = state.items
-         }else{
-          state.filteredItems = state.items.filter((book)=>{
-            const catMatch = book.category.toLowerCase().includes(category.toLowerCase())
-            return catMatch
-           })
-         }
-        
-         
+    filterBooks: (state, action: PayloadAction<filterTermPayload>) => {
+      const { category } = action.payload
+      if (category === 'all') {
+        state.filteredItems = state.items
+      } else {
+        state.filteredItems = state.items.filter((book) => {
+          const catMatch = book.category.toLowerCase().includes(category.toLowerCase())
+          return catMatch
+        })
+      }
     },
 
     deleteBook: (state, action: PayloadAction<BookPayload>) => {
@@ -98,7 +99,6 @@ export const bookSlice = createSlice({
       state.isLoading = false
       state.items = action.payload
       state.filteredItems = action.payload
-    
     })
     builder.addCase(fetchBooksThunk.rejected, (state, action: PayloadAction<any>) => {
       state.isLoading = false
@@ -107,7 +107,15 @@ export const bookSlice = createSlice({
   }
 })
 
-export const { addBook, searchBooks, filterBooks, deleteBook, updateBook, setBooks, setLoading, setError } =
-  bookSlice.actions
+export const {
+  addBook,
+  searchBooks,
+  filterBooks,
+  deleteBook,
+  updateBook,
+  setBooks,
+  setLoading,
+  setError
+} = bookSlice.actions
 
 export default bookSlice.reducer

@@ -3,15 +3,17 @@ import { AppDispatch, RootState } from '../../redux/store'
 import { Book } from '../../interfaces/types'
 import CartItem from '../../components/cartItem/CartItem'
 import './cartPage.scss'
-import { decreaseCartItemQuantity, increaseCartItemQuantity, returnBook } from '../../redux/reducers/cartSlice'
+import {
+  decreaseCartItemQuantity,
+  increaseCartItemQuantity,
+  returnBook
+} from '../../redux/reducers/cartSlice'
 
 type Props = {}
 
 const CartPage = (props: Props) => {
   const cartItems = useSelector((state: RootState) => state.cart.items)
   const dispatch = useDispatch<AppDispatch>()
-
-
 
   //handle increase and decrease of specific cartItem
   const handleDecrease = (book: Book) => {
@@ -23,11 +25,10 @@ const CartPage = (props: Props) => {
   }
 
   //return a book
-  const handleReturnTheBook = (book:Book)=>{
+  const handleReturnTheBook = (book: Book) => {
     dispatch(returnBook(book))
   }
 
- 
   return (
     <div className="cartPage">
       <h1 className="cartPage__heading">Your Cart</h1>
@@ -38,10 +39,9 @@ const CartPage = (props: Props) => {
               key={cartItem.book.id}
               book={cartItem.book}
               quantity={cartItem.quantity}
-              onReturnBook={()=>handleReturnTheBook(cartItem.book)}
+              onReturnBook={() => handleReturnTheBook(cartItem.book)}
               onDecrease={() => handleDecrease(cartItem.book)}
-               onIncrease={() => handleIncrease(cartItem.book)}
-
+              onIncrease={() => handleIncrease(cartItem.book)}
             />
           ))}
         </div>

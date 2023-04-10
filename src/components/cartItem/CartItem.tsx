@@ -12,7 +12,6 @@ type Props = {
 }
 
 const CartItem = ({ book, quantity, onIncrease, onDecrease, onReturnBook }: Props) => {
-    const cartQty = useSelector((state:RootState)=>state.cart.quantity)
   return (
     <div className="cartItem">
       <div className="bookItemWrapper">
