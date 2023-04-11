@@ -6,6 +6,12 @@ export interface BookPayload {
   user: User
 }
 
+interface UpdateBookPayload {
+  user: User;
+  book: Book;
+  updatedBook: Book;
+}
+
 const initialState: BookState = {
   items: [],
   isLoading: false,
@@ -70,17 +76,22 @@ export const bookSlice = createSlice({
         state.error = 'You do not have permission to delete this book.'
       }
     },
-    updateBook: (state, action: PayloadAction<BookPayload>) => {
-      const { book, user } = action.payload
+    updateBook: (state, action: PayloadAction<UpdateBookPayload>) => {
+      const { book, user, updatedBook } = action.payload
       if (user.role === 'Admin') {
         const index = state.items.findIndex((item) => item.id === book.id)
         if (index !== -1) {
-          state.items[index] = book
+          state.items = [
+            ...state.items.slice(0, index),
+            updatedBook,
+            ...state.items.slice(index + 1)
+          ]
         }
       } else {
         state.error = 'You do not have permission to update this book.'
       }
     },
+    
     setBooks: (state, action: PayloadAction<Book[]>) => {
       state.items = action.payload
     },

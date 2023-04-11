@@ -2,8 +2,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import './adminPage.scss'
 import { AppDispatch, RootState } from '../../redux/store'
 import AdminBookItem from '../../components/adminBookItem/AdminBookItem'
-import { deleteBook, BookPayload, addBook } from '../../redux/reducers/bookSlice'
+import { deleteBook, BookPayload, addBook, updateBook } from '../../redux/reducers/bookSlice'
 import { Book } from '../../interfaces/types'
+import { useState } from 'react'
+import UpdateForm from '../../components/updateForm/UpdateForm'
 
 type Props = {}
 
@@ -12,8 +14,12 @@ const AdminPage = (props: Props) => {
   const user = useSelector((state: RootState) => state.user.currentUser)
   const dispatch = useDispatch<AppDispatch>()
 
-  // to add a book
 
+  // states
+  const [isOpen, setIsOpen] = useState(false)
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null)
+
+  // to add a book
   const handleAddBook = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -37,6 +43,23 @@ const AdminPage = (props: Props) => {
     }
   }
 
+
+
+
+  // to update a book
+  const handleUpdateBook = (book: Book) => {
+    setSelectedBook(book)
+    setIsOpen(true)
+  }
+  
+  const handleSubmitUpdateForm = (updatedBook: Book) => {
+    if (user && selectedBook) {
+      dispatch(updateBook({ user, book: selectedBook, updatedBook }))
+      setSelectedBook(null)
+      setIsOpen(false)
+    }
+  }
+
   return (
     <div className="adminPage">
       <div className="sidebar">
@@ -44,29 +67,35 @@ const AdminPage = (props: Props) => {
           <h2>Welcome Admin!</h2>
           <form onSubmit={handleAddBook}>
             <label htmlFor="title">Title of the book</label>
-            <input type="text" id="title" />
+            <input type="text" id="title" required />
             <label htmlFor="isbn">Isbn</label>
-            <input type="text" id="isbn" />
+            <input type="text" id="isbn" required />
             <label htmlFor="description">Description</label>
-            <input type="text" id="description" />
+            <input type="text" id="description" required />
             <label htmlFor="publisher">Publisher</label>
-            <input type="text" id="publisher" />
+            <input type="text" id="publisher" required />
             <label htmlFor="category">Category</label>
-            <input type="text" id="category" />
+            <input type="text" id="category" required />
             <label htmlFor="authors">Authors</label>
-            <input type="text" id="authors" />
+            <input type="text" id="authors" required />
             <label htmlFor="publishedDate">Published date</label>
-            <input type="date" id="publishedDate" />
+            <input type="date" id="publishedDate" required />
             <label htmlFor="availability">Availability</label>
-            <input type="text" id="availability" placeholder="Available or Taken" />
+            <input type="text" id="availability" placeholder="Available or Taken" required />
             <button>Add new book</button>
           </form>
         </div>
       </div>
       <div className="adminBookItems">
         {books.map((book) => {
-          return <AdminBookItem book={book} onDeleteBook={() => handleDeleteBook(book)} />
+          return (
+            <div>
+              <AdminBookItem book={book} onDeleteBook={() => handleDeleteBook(book)} onUpdateBook={()=>handleUpdateBook(book)} />
+             {(isOpen && selectedBook && selectedBook.id ===book.id ) && <UpdateForm book={selectedBook} onUpdateBook={handleSubmitUpdateForm} setIsOpen={setIsOpen}/>}
+            </div>
+          )
         })}
+
       </div>
     </div>
   )

@@ -2,6 +2,7 @@
   display: flex;
   color: #fff;
   min-height: 80vh;
+ 
   .sidebar {
     flex: 3;
     background-color: rgb(59, 69, 69);
@@ -48,8 +49,11 @@
   }
   .adminBookItems {
     flex: 5;
+    gap: .3rem;
     display: flex;
     flex-wrap: wrap;
     padding: 5px;
+    position: relative;
+  
   }
 }
