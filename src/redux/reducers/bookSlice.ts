@@ -27,7 +27,7 @@ export interface filterTermPayload {
 }
 
 export const fetchBooksThunk = createAsyncThunk('books/fetch', async () => {
-  const response = await fetch('harmonious-eclair-13e440.netlify.app/books.json')
+  const response = await fetch('https://harmonious-eclair-13e440.netlify.app/books.json')
   const books = await response.json()
   return books.data
 })
