@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
-import './adminPage.scss'
+
 import { AppDispatch, RootState } from '../../redux/store'
 import AdminBookItem from '../../components/adminBookItem/AdminBookItem'
 import { deleteBook, BookPayload, addBook, updateBook } from '../../redux/reducers/bookSlice'
 import { Book } from '../../interfaces/types'
-import { useState } from 'react'
+import {  useState } from 'react'
 import UpdateForm from '../../components/updateForm/UpdateForm'
-
+import './adminPage.scss'
 type Props = {}
 
 const AdminPage = (props: Props) => {
@@ -14,10 +14,12 @@ const AdminPage = (props: Props) => {
   const user = useSelector((state: RootState) => state.user.currentUser)
   const dispatch = useDispatch<AppDispatch>()
 
-
   // states
   const [isOpen, setIsOpen] = useState(false)
   const [selectedBook, setSelectedBook] = useState<Book | null>(null)
+  const [isAdded, setIsAdded] = useState<boolean>(false)
+  const [addMessage, setAddMessage] = useState<String>('')
+ 
 
   // to add a book
   const handleAddBook = (event: React.FormEvent<HTMLFormElement>) => {
@@ -29,11 +31,26 @@ const AdminPage = (props: Props) => {
       description: (document.getElementById('description') as HTMLInputElement).value,
       publisher: (document.getElementById('publisher') as HTMLInputElement).value,
       category: (document.getElementById('category') as HTMLInputElement).value,
-      authors: Array.from((document.getElementById('authors') as HTMLInputElement).value),
+      authors: Array.from(
+        (document.getElementById('authors') as HTMLInputElement).value.split(',')
+      ),
       publishDate: (document.getElementById('publishedDate') as HTMLInputElement).value,
       availability: (document.getElementById('availability') as HTMLInputElement).value
     }
     dispatch(addBook(newBook))
+    // Reset the form
+    event.currentTarget.reset()
+
+    //show notification
+    setIsAdded(true)
+    setAddMessage('book added successfully')
+
+    // Set the interval and store its ID
+    // Clear the message after 2 seconds
+    setTimeout(() => {
+      setIsAdded(false)
+      setAddMessage('')
+    }, 2000)
   }
 
   // to delete a book
@@ -43,15 +60,13 @@ const AdminPage = (props: Props) => {
     }
   }
 
-
-
-
   // to update a book
   const handleUpdateBook = (book: Book) => {
     setSelectedBook(book)
     setIsOpen(true)
+   
   }
-  
+
   const handleSubmitUpdateForm = (updatedBook: Book) => {
     if (user && selectedBook) {
       dispatch(updateBook({ user, book: selectedBook, updatedBook }))
@@ -82,6 +97,7 @@ const AdminPage = (props: Props) => {
             <input type="date" id="publishedDate" required />
             <label htmlFor="availability">Availability</label>
             <input type="text" id="availability" placeholder="Available or Taken" required />
+            {isAdded && <span>{addMessage}</span>}
             <button>Add new book</button>
           </form>
         </div>
@@ -90,12 +106,22 @@ const AdminPage = (props: Props) => {
         {books.map((book) => {
           return (
             <div>
-              <AdminBookItem book={book} onDeleteBook={() => handleDeleteBook(book)} onUpdateBook={()=>handleUpdateBook(book)} />
-             {(isOpen && selectedBook && selectedBook.id ===book.id ) && <UpdateForm book={selectedBook} onUpdateBook={handleSubmitUpdateForm} setIsOpen={setIsOpen}/>}
+              <AdminBookItem
+                book={book}
+                onDeleteBook={() => handleDeleteBook(book)}
+                onUpdateBook={() => handleUpdateBook(book)}
+              />
+              {isOpen && selectedBook && selectedBook.id === book.id && (
+                <UpdateForm
+                  book={selectedBook}
+                  onUpdateBook={handleSubmitUpdateForm}
+                  setIsOpen={setIsOpen}
+               
+                />
+              )}
             </div>
           )
         })}
-
       </div>
     </div>
   )

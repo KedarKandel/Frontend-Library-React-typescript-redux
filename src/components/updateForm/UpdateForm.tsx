@@ -6,6 +6,7 @@ type Props = {
   book: Book
   onUpdateBook: (book: Book) => void
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+
 }
 
 const UpdateForm = ({ book, onUpdateBook, setIsOpen }: Props) => {
@@ -23,17 +24,34 @@ const UpdateForm = ({ book, onUpdateBook, setIsOpen }: Props) => {
     event.preventDefault()
     onUpdateBook(updatedBook)
     setIsOpen(false)
+   
   }
 
   return (
     <div className="updateForm">
+      
       <div className="updateFormWrapper">
         <h2>Update book</h2>
+
         <form onSubmit={handleSubmit}>
           <label htmlFor="title">Title of the book</label>
-          <input type="text" id="title" name="title" value={updatedBook.title} onChange={handleChange} required />
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={updatedBook.title}
+            onChange={handleChange}
+            required
+          />
           <label htmlFor="isbn">Isbn</label>
-          <input type="text" id="isbn" name="isbn" value={updatedBook.isbn} onChange={handleChange} required />
+          <input
+            type="text"
+            id="isbn"
+            name="isbn"
+            value={updatedBook.isbn}
+            onChange={handleChange}
+            required
+          />
           <label htmlFor="description">Description</label>
           <input
             type="text"
@@ -90,8 +108,10 @@ const UpdateForm = ({ book, onUpdateBook, setIsOpen }: Props) => {
             required
           />
           <div className="updateFormButtons">
-            <button type="submit" className='submit'>Update book</button>
-            <button type="button" className='cancel' onClick={()=>setIsOpen(false)}>
+            <button type="submit" className="submit">
+              Update book
+            </button>
+            <button type="button" className="cancel" onClick={() => setIsOpen(false)}>
               Cancel
             </button>
           </div>

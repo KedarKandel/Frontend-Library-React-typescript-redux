@@ -1,6 +1,7 @@
 .cartPage{
     min-height: 88vh;
     padding: 5%;
+    background-color: #e0dede;
     .cartPage__heading{  
         margin-bottom: 2%;
         color: teal;
@@ -11,5 +12,10 @@
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
+    }
+    .cartPage__empty{
+        font-size: 17px;
+        font-weight: 500;
+        color: teal;
     }
 }

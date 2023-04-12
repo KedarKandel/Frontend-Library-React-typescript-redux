@@ -1,24 +1,30 @@
 .bookItem {
-    height: 15rem;
-    width: 15rem;
-    padding: 5px;
+  height: 15rem;
+  width: 15rem;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid teal;
+  color: rgb(87, 85, 85);
+
+  .bookItemWrapper {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    justify-content: center;
     align-items: center;
-    border: 1px solid teal;
-    color: rgb(87, 85, 85);
-  
-    .bookItemWrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .adminButtons{
-        display: flex;
-        gap: .5rem;
-    }
+    justify-content: center;
+    gap: 1rem;
   }
+  .adminButtons {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bookItem {
+    width: 20rem;
+  }
+}

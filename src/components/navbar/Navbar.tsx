@@ -9,8 +9,10 @@ const Navbar = (props: Props) => {
   const cartQty = useSelector((state:RootState)=>state.cart.quantity)
   return (
     <header className="navbar">
-      <h1>Library</h1>
-      <div>
+      <Link to="/" style={{ textDecoration: 'none', color: '#fff' }}>
+          <h1>e-Library</h1>
+        </Link>
+      <div className='links'>
         <Link to="/" style={{ textDecoration: 'none', color: '#fff' }}>
           <span>Home</span>
         </Link>
@@ -21,7 +23,7 @@ const Navbar = (props: Props) => {
 
       <Link to="/cart" style={{ textDecoration: 'none', color: '#fff' }}>
         <div>
-          <span>Cart({cartQty})</span>
+          <span>Loans({cartQty})</span>
         </div>
       </Link>
     </header>

@@ -31,7 +31,7 @@ const CartPage = (props: Props) => {
 
   return (
     <div className="cartPage">
-      <h1 className="cartPage__heading">Your Cart</h1>
+      <h1 className="cartPage__heading">Your loan</h1>
       {cartItems.length > 0 ? (
         <div className="cartPage__items">
           {cartItems.map((cartItem) => (
@@ -46,7 +46,7 @@ const CartPage = (props: Props) => {
           ))}
         </div>
       ) : (
-        <div className="cartPage__empty">Your cart is empty.</div>
+        <div className="cartPage__empty">Your have no loans. Would like to borrow? Explore the list of books. </div>
       )}
     </div>
   )
