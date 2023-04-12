@@ -31,6 +31,7 @@ const HomePage = (props: Props) => {
   
   useEffect(() => {
     dispatch(filterBooks({ category }))
+   
   }, [dispatch, category])
 
   if (isLoading) {
