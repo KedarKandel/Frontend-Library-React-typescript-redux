@@ -1,11 +1,12 @@
 .updateForm {
   position: fixed;
   background-color: rgb(59, 69, 69);
-  top: 10%;
-  left: 60%;
+  z-index: 100;
+  left: 50%;
+  top: 2%;
   transform: translate(-50%, 0);
   width: 80%;
-  max-width: 500px;
+ 
   border-radius: 2%;
 
   .updateFormWrapper {
@@ -69,11 +70,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .updateForm {
-    width: 80%;
-    top: 20%;
-    left: 50%;
-  }
+ 
 
   .updateFormWrapper form {
     gap: 0.5rem;
@@ -83,7 +80,7 @@
     }
 
     input {
-      font-size: 16px;
+      font-size: 10px
     }
 
     .updateFormButtons {

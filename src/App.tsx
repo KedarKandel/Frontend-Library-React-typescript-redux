@@ -24,7 +24,7 @@ function App() {
   }, [])
 
   return (
-    <>
+    <div>
       <Navbar />
       <Routes>
         <Route index path="/" element={<HomePage />} />
@@ -32,7 +32,7 @@ function App() {
         <Route index path="/cart" element={<CartPage />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   )
 }
 
