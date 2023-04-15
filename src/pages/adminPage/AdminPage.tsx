@@ -105,7 +105,7 @@ const AdminPage = (props: Props) => {
       <div className="adminBookItems">
         {books.map((book) => {
           return (
-            <div>
+            <div className='adminItemsWrapper'>
               <AdminBookItem
                 book={book}
                 onDeleteBook={() => handleDeleteBook(book)}
